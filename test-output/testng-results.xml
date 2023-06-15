@@ -1,68 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="7" total="9" passed="2" failed="0" skipped="0">
+<testng-results ignored="18" total="20" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-09T12:24:11 IST" name="Default suite" finished-at="2023-06-09T12:24:31 IST" duration-ms="20612">
+  <suite started-at="2023-06-15T07:14:17 IST" name="parallel testing" finished-at="2023-06-15T07:14:34 IST" duration-ms="16128">
     <groups>
+      <group name="Sanity">
+        <method signature="DemoWebShop.tc_002_verifyLogin()[pri:1, instance:seleniumbasics.DemoWebShop@41a0aa7d]" name="tc_002_verifyLogin" class="seleniumbasics.DemoWebShop"/>
+        <method signature="DemoWebShop.tc_007_verifyRegistrationUsingRandomGenerator()[pri:3, instance:seleniumbasics.DemoWebShop@5b218417]" name="tc_007_verifyRegistrationUsingRandomGenerator" class="seleniumbasics.DemoWebShop"/>
+      </group> <!-- Sanity -->
     </groups>
-    <test started-at="2023-06-09T12:24:11 IST" name="Default test" finished-at="2023-06-09T12:24:31 IST" duration-ms="20612">
+    <test started-at="2023-06-15T07:14:17 IST" name="Chrome Test" finished-at="2023-06-15T07:14:27 IST" duration-ms="9910">
       <class name="seleniumbasics.DemoWebShop">
-        <test-method is-config="true" signature="setup()[pri:0, instance:seleniumbasics.DemoWebShop@4d154ccd]" started-at="2023-06-09T12:24:11 IST" name="setup" finished-at="2023-06-09T12:24:16 IST" duration-ms="5203" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="tc_008_verifyLoginWithValidDatas(java.lang.String,java.lang.String)[pri:0, instance:seleniumbasics.DemoWebShop@4d154ccd]" started-at="2023-06-09T12:24:16 IST" name="tc_008_verifyLoginWithValidDatas" data-provider="ValidCredentials" finished-at="2023-06-09T12:24:22 IST" duration-ms="5449" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:seleniumbasics.DemoWebShop@41a0aa7d]" started-at="2023-06-15T07:14:17 IST" name="setup" finished-at="2023-06-15T07:14:25 IST" duration-ms="7679" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[rakesh5757@gmail.com]]>
+                <![CDATA[Chrome]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[rak12345]]>
+                <![CDATA[https://demowebshop.tricentis.com/]]>
               </value>
             </param>
           </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tc_008_verifyLoginWithValidDatas -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:seleniumbasics.DemoWebShop@4d154ccd]" started-at="2023-06-09T12:24:22 IST" name="tearDown" finished-at="2023-06-09T12:24:22 IST" duration-ms="174" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=tc_008_verifyLoginWithValidDatas status=SUCCESS method=DemoWebShop.tc_008_verifyLoginWithValidDatas(java.lang.String,java.lang.String)[pri:0, instance:seleniumbasics.DemoWebShop@4d154ccd] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:seleniumbasics.DemoWebShop@4d154ccd]" started-at="2023-06-09T12:24:22 IST" name="setup" finished-at="2023-06-09T12:24:25 IST" duration-ms="2860" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="tc_008_verifyLoginWithValidDatas(java.lang.String,java.lang.String)[pri:0, instance:seleniumbasics.DemoWebShop@4d154ccd]" started-at="2023-06-09T12:24:25 IST" name="tc_008_verifyLoginWithValidDatas" data-provider="ValidCredentials" finished-at="2023-06-09T12:24:31 IST" duration-ms="6648" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[rakesh9656@gmail.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[rocky123]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="tc_002_verifyLogin()[pri:1, instance:seleniumbasics.DemoWebShop@41a0aa7d]" started-at="2023-06-15T07:14:25 IST" name="tc_002_verifyLogin" description="verify login" finished-at="2023-06-15T07:14:27 IST" duration-ms="2039" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tc_008_verifyLoginWithValidDatas -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:seleniumbasics.DemoWebShop@4d154ccd]" started-at="2023-06-09T12:24:31 IST" name="tearDown" finished-at="2023-06-09T12:24:31 IST" duration-ms="178" status="PASS">
+        </test-method> <!-- tc_002_verifyLogin -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:seleniumbasics.DemoWebShop@41a0aa7d]" started-at="2023-06-15T07:14:27 IST" name="tearDown" finished-at="2023-06-15T07:14:27 IST" duration-ms="133" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=tc_008_verifyLoginWithValidDatas status=SUCCESS method=DemoWebShop.tc_008_verifyLoginWithValidDatas(java.lang.String,java.lang.String)[pri:0, instance:seleniumbasics.DemoWebShop@4d154ccd] output={null}]]]>
+                <![CDATA[[TestResult name=tc_002_verifyLogin status=SUCCESS method=DemoWebShop.tc_002_verifyLogin()[pri:1, instance:seleniumbasics.DemoWebShop@41a0aa7d] output={null}]]]>
               </value>
             </param>
           </params>
@@ -70,6 +43,41 @@
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- seleniumbasics.DemoWebShop -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Chrome Test -->
+    <test started-at="2023-06-15T07:14:17 IST" name="Firefox Test" finished-at="2023-06-15T07:14:34 IST" duration-ms="16128">
+      <class name="seleniumbasics.DemoWebShop">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:seleniumbasics.DemoWebShop@5b218417]" started-at="2023-06-15T07:14:17 IST" name="setup" finished-at="2023-06-15T07:14:31 IST" duration-ms="13035" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Firefox]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://demowebshop.tricentis.com/]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="tc_007_verifyRegistrationUsingRandomGenerator()[pri:3, instance:seleniumbasics.DemoWebShop@5b218417]" started-at="2023-06-15T07:14:31 IST" name="tc_007_verifyRegistrationUsingRandomGenerator" description="verify registration using random generator" finished-at="2023-06-15T07:14:33 IST" duration-ms="2213" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc_007_verifyRegistrationUsingRandomGenerator -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:seleniumbasics.DemoWebShop@5b218417]" started-at="2023-06-15T07:14:33 IST" name="tearDown" finished-at="2023-06-15T07:14:34 IST" duration-ms="829" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=tc_007_verifyRegistrationUsingRandomGenerator status=SUCCESS method=DemoWebShop.tc_007_verifyRegistrationUsingRandomGenerator()[pri:3, instance:seleniumbasics.DemoWebShop@5b218417] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- seleniumbasics.DemoWebShop -->
+    </test> <!-- Firefox Test -->
+  </suite> <!-- parallel testing -->
 </testng-results>

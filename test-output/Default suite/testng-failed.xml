@@ -5,9 +5,9 @@
     <classes>
       <class name="seleniumbasics.DemoWebShop">
         <methods>
+          <include name="tc_009_verifyLoginWithParameters"/>
           <include name="tearDown"/>
           <include name="setup"/>
-          <include name="tc_008_verifyLoginWithValidDatas" invocation-numbers="0 1"/>
         </methods>
       </class> <!-- seleniumbasics.DemoWebShop -->
     </classes>

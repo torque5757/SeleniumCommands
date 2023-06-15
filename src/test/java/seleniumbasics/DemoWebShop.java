@@ -19,10 +19,14 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+
 
 public class DemoWebShop {
 	WebDriver driver;
+	
 	public void testInitialise(String browser) {
 		if (browser.equals("Chrome")) {
 			ChromeOptions ops = new ChromeOptions();
@@ -44,9 +48,11 @@ public class DemoWebShop {
 		driver.manage().deleteAllCookies();
 	}
 
-	@BeforeMethod
-	public void setup() {
-		testInitialise("Chrome");
+	@BeforeMethod(alwaysRun=true)
+	@Parameters({"browser","base_url"})
+	public void setup(String browserName, String url) {
+		testInitialise(browserName);
+		driver.get(url);
 
 	}
 
@@ -61,7 +67,7 @@ public class DemoWebShop {
 		driver.quit();
 	}
 
-	@Test
+	@Test(priority=1,enabled=true,description="verify title of obsqura application",groups= {"Regression"})
 	public void tc_001_verifyObsquraTitle() {
 		driver.get("https://selenium.obsqurazone.com/index.php");
 		String actualTitle = driver.getTitle();
@@ -70,10 +76,10 @@ public class DemoWebShop {
 		Assert.assertEquals(actualTitle, expectedTitle, "Invalid title found");
 
 	}
-	@Test
+	@Test(priority=1,enabled=true,description="verify login",groups= {"Sanity"})
 	public void tc_002_verifyLogin()
 	{
-		driver.get("https://demowebshop.tricentis.com/");
+		
 		WebElement login = driver.findElement(By.xpath("//a[text()='Log in']"));
 		login.click();
 		String email ="urbanetorq@gmail.com";
@@ -89,10 +95,10 @@ public class DemoWebShop {
 		Assert.assertEquals(actMsg, expMsg, "Invalid Message");
 		
 	}
-	@Test
+	@Test(priority=2,enabled=true,description="verify registration",groups= {"Smoke"})
 	public void tc_003_verifyRegistration()
 	{
-		driver.get("https://demowebshop.tricentis.com/");
+		
 	WebElement register=driver.findElement(By.xpath("//a[text()='Register']"));
 	register.click();
 	List<WebElement> gender = driver.findElements(By.xpath("//input[@name='Gender']"));
@@ -127,20 +133,20 @@ public class DemoWebShop {
 			}
 		}
 	}
-	@Test
+	@Test(priority=1,enabled=true,description="verify title from excel",groups= {"Regression"})
 	public void tc_004_verifyTitleFromExcelSheet() throws IOException
 	{
-		driver.get("https://demowebshop.tricentis.com/");
+		
 		String actualTitle = driver.getTitle();
 		String excelPath = "\\src\\test\\resources\\TestData.xlsx";
 		String sheetName = "HomePage";
 		String expTitle = ExcelUtility.readStringData(excelPath, sheetName, 0, 1);
 		Assert.assertEquals(actualTitle, expTitle, "Invalid title");
 	}
-	@Test
+	@Test(priority=1,enabled=true,description="verify registration from excelsheet",groups= {"Smoke"})
 	public void tc_005_verifyregistrationFromExcelSheet() throws IOException
 	{
-		driver.get("https://demowebshop.tricentis.com/");
+		
 		String excelPath = "\\src\\test\\resources\\TestData.xlsx";
 		String sheetName = "RegisterPage";
 		String expTitle = ExcelUtility.readStringData(excelPath, sheetName, 0, 1);
@@ -167,10 +173,10 @@ public class DemoWebShop {
 		String actMsg = emailsubmitted.getText();
 		Assert.assertEquals(actMsg,ExcelUtility.readStringData(excelPath, sheetName, 3, 1), "Invalid Email");
 	}
-	@Test(dataProvider="InvalidCredentials")
+	@Test(priority=1,enabled=true,description="verify login with invalid datas",groups= {"Regression"},dataProvider="InvalidCredentials")
 	public void tc_006_verifyLoginWithInvalidData(String email,String psword )
 	{
-		driver.get("https://demowebshop.tricentis.com/");
+		
 		WebElement login = driver.findElement(By.xpath("//a[text()='Log in']"));
 		login.click();
 		WebElement emailField = driver.findElement(By.id("Email"));
@@ -190,10 +196,10 @@ public class DemoWebShop {
 		Object[][] data = {{"rakesh.221643@gmail.com","rak123"},{"rakesh.2216@gmail.com","rak12345"},{"rakesh.2211643@gmail.com","rak123"}};
 		return data;
 	}
-	@Test
+	@Test(priority=3,enabled=true,description="verify registration using random generator",groups= {"Sanity"})
 	public void tc_007_verifyRegistrationUsingRandomGenerator()
 	{
-		driver.get("https://demowebshop.tricentis.com/");
+		
 		WebElement register=driver.findElement(By.xpath("//a[text()='Register']"));
 		register.click();
 		String fName= RandomDataUtility.getfName();
@@ -220,10 +226,10 @@ public class DemoWebShop {
 		Assert.assertEquals(actMsg, expMsg, "Invalid Message");
 		
 	}
-	@Test(dataProvider="ValidCredentials")
+	@Test(priority=4,enabled=true,description="verify login with valid datas",groups= {"Regression"},dataProvider="ValidCredentials")
 	public void tc_008_verifyLoginWithValidDatas(String email,String psword )
 	{
-		driver.get("https://demowebshop.tricentis.com/");
+		
 		WebElement login = driver.findElement(By.xpath("//a[text()='Log in']"));
 		login.click();
 		WebElement emailField = driver.findElement(By.id("Email"));
@@ -248,9 +254,41 @@ public class DemoWebShop {
 		Object[][] data = {{"rakesh5757@gmail.com","rak12345"},{"rakesh9656@gmail.com","rocky123"}};
 		return data;
 	}
-	@Test
-	public void tc_009_verifyLoginWithParameters()
+	@Test(priority=4,enabled=true,description="verify login with parameters",groups= {"Smoke"})
+	@Parameters({"uName","pWord"})
+	public void tc_009_verifyLoginWithParameters(String email,String psword )
 	{
+		WebElement login = driver.findElement(By.xpath("//a[text()='Log in']"));
+		login.click();
+		WebElement emailField = driver.findElement(By.id("Email"));
+		emailField.sendKeys(email);
+		WebElement password = driver.findElement(By.id("Password"));
+		password.sendKeys(psword);
+		WebElement submitbtn = driver.findElement(By.xpath("//input[@class='button-1 login-button']"));
+		submitbtn.click();
+		WebElement emailsubmitted = driver.findElement(By.xpath("//div[@class='header-links']//a[@class='account']"));
+		String actMsg = emailsubmitted.getText();
+		String expMsg =email;
+		Assert.assertEquals(actMsg, expMsg, "Invalid Message");
 	}
+	@Test
+	@Parameters({"uName","pWord"})
+	public void tc_010_verifyLoginWithInvalidParameters(String email,String psword )
+	{
+		WebElement login = driver.findElement(By.xpath("//a[text()='Log in']"));
+		login.click();
+		WebElement emailField = driver.findElement(By.id("Email"));
+		emailField.sendKeys(email);
+		WebElement password = driver.findElement(By.id("Password"));
+		password.sendKeys(psword);
+		WebElement submitbtn = driver.findElement(By.xpath("//input[@class='button-1 login-button']"));
+		submitbtn.click();
+		WebElement errorMsg = driver.findElement(By.xpath("//div[@class='validation-summary-errors']//span"));
+		String actMsg = errorMsg.getText();
+		String expMsg ="Login was unsuccessful. Please correct the errors and try again.";
+		Assert.assertEquals(actMsg, expMsg, "Invalid Message");	
+		
+	}
+	
 }
 

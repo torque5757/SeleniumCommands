@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="parallel testing" parallel="tests">
+	<test thread-count="2" name="Chrome Test">
+		<parameter name="browser" value="Chrome" />
+		<parameter name="base_url" value="https://demowebshop.tricentis.com/" />
+		<parameter name="uName" value="rakesh5757@gmail.com" />
+		<parameter name="pWord" value="rak12345" />
+		<classes>
+			<class name="seleniumbasics.DemoWebShop">
+				<methods>
+					<include name="tc_002_verifyLogin"/>
+					<exclude name="tc_003_verifyRegistration"/>
+					<exclude name="tc_004_verifyTitleFromExcelSheet"/>
+					<exclude name="tc_005_verifyregistrationFromExcelSheet"/>
+					<exclude name="tc_006_verifyLoginWithInvalidData"/>
+					<exclude name="tc_007_verifyRegistrationUsingRandomGenerator"/>
+					<exclude name="tc_008_verifyLoginWithValidDatas"/>
+					<exclude name="tc_009_verifyLoginWithParameters" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+	<test name="Firefox Test">
+		<parameter name="browser" value="Firefox" />
+		<parameter name="base_url" value="https://demowebshop.tricentis.com/" />
+		<parameter name="uName" value="rakesh5757@gmail.com" />
+		<parameter name="pWord" value="rak12345" />
+		<classes>
+			<class name="seleniumbasics.DemoWebShop">
+				<methods>
+					<exclude name="tc_009_verifyLoginWithParameters" />
+					<exclude name="tc_002_verifyLogin"/>
+					<exclude name="tc_003_verifyRegistration"/>
+					<exclude name="tc_004_verifyTitleFromExcelSheet"/>
+					<exclude name="tc_005_verifyregistrationFromExcelSheet"/>
+					<exclude name="tc_006_verifyLoginWithInvalidData"/>
+					<include name="tc_007_verifyRegistrationUsingRandomGenerator"/>
+					<exclude name="tc_008_verifyLoginWithValidDatas"/>
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
